@@ -12,5 +12,11 @@ import com.google.gson.JsonElement;
  *
  */
 public interface Exporter {
+	/**
+	 * export to jsonelement for exporting process
+	 * 
+	 * @param newKey
+	 * @return
+	 */
 	public JsonElement export(String newKey);
 }
