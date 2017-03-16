@@ -30,7 +30,7 @@ import javafx.concurrent.Task;
  * @since 08.03.2017
  *
  */
-public class ChannelReader extends Task<Void> {
+public class ChannelReader extends Task<Void> implements Reader {
 	private ResourceBundle bundle;
 	private File file;
 	private List<JsonObject> satelliteList;
@@ -76,6 +76,7 @@ public class ChannelReader extends Task<Void> {
 	 * 
 	 * @throws IOException
 	 */
+	@Override
 	public void read() throws IOException {
 		init();
 		long count = countLines(file);

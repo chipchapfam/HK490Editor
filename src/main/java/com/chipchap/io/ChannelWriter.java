@@ -33,7 +33,7 @@ import javafx.concurrent.Task;
  * @since 08.03.2017
  *
  */
-public class ChannelWriter extends Task<Void> {
+public class ChannelWriter extends Task<Void> implements com.chipchap.io.Writer {
 	private final String ENCODING = "UTF-8";
 	private ChannelReader reader;
 	private Gson gson = new GsonBuilder().setPrettyPrinting().create();
@@ -50,6 +50,7 @@ public class ChannelWriter extends Task<Void> {
 	 * 
 	 * @throws IOException
 	 */
+	@Override
 	public void write() throws IOException {
 		int startIndex = 1;
 		JsonArray aucFavReNames = new JsonArray();
