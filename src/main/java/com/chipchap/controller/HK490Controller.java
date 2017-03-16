@@ -181,12 +181,12 @@ public class HK490Controller implements ChangeListener, EventHandler<KeyEvent>, 
 		task.setOnSucceeded(event -> {
 			pForm.close();
 			pForm.deactivateProgressBar();
+			dirtyFlag = true;
 			Platform.runLater(new Runnable() {
 				@Override
 				public void run() {
 					listView.setItems(FXCollections.observableArrayList(list));
 					sortBtn.setText(selectedOption);
-					dirtyFlag = true;
 				}
 			});
 		});
@@ -310,6 +310,7 @@ public class HK490Controller implements ChangeListener, EventHandler<KeyEvent>, 
 
 	@FXML
 	public void quit() {
+		checkChangesBeforeClose();
 		Platform.exit();
 		System.exit(0);
 	}
