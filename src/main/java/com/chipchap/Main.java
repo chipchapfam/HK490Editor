@@ -16,7 +16,7 @@ import javafx.stage.WindowEvent;
  * 
  * main class of hk490 editor
  *
- * @author []
+ * @author Chi Thien Phan
  * @version 1.0
  * @since 15.03.2017
  *

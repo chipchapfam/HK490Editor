@@ -126,11 +126,11 @@ public class HK490Controller implements ChangeListener, EventHandler<KeyEvent>, 
 		File file = fileChooser.showOpenDialog(stage);
 		if (file != null) {
 			reader = new ChannelReader(file, bundle);
-			ProgressForm pForm = new ProgressForm(bundle);
+			ProgressForm pForm = new ProgressForm(bundle, stage);
 			pForm.activateProgressBar(reader);
 
 			reader.setOnSucceeded(event -> {
-				pForm.getDialogStage().close();
+				pForm.close();
 				pForm.deactivateProgressBar();
 				Platform.runLater(new Runnable() {
 					@Override
@@ -147,7 +147,7 @@ public class HK490Controller implements ChangeListener, EventHandler<KeyEvent>, 
 				});
 			});
 
-			pForm.getDialogStage().show();
+			pForm.show();
 
 			Thread thread = new Thread(reader);
 			thread.start();
@@ -175,11 +175,11 @@ public class HK490Controller implements ChangeListener, EventHandler<KeyEvent>, 
 		currentSortOrder = newOrder;
 
 		SortProgramTask task = new SortProgramTask(bundle, list, newOrder);
-		ProgressForm pForm = new ProgressForm(bundle);
+		ProgressForm pForm = new ProgressForm(bundle, stage);
 		pForm.activateProgressBar(task);
 
 		task.setOnSucceeded(event -> {
-			pForm.getDialogStage().close();
+			pForm.close();
 			pForm.deactivateProgressBar();
 			Platform.runLater(new Runnable() {
 				@Override
@@ -190,7 +190,7 @@ public class HK490Controller implements ChangeListener, EventHandler<KeyEvent>, 
 				}
 			});
 		});
-		pForm.getDialogStage().show();
+		pForm.show();
 		Thread thread = new Thread(task);
 		thread.start();
 	}
@@ -291,16 +291,16 @@ public class HK490Controller implements ChangeListener, EventHandler<KeyEvent>, 
 			if (file != null) {
 				ChannelWriter writer = new ChannelWriter(reader, file);
 
-				ProgressForm pForm = new ProgressForm(bundle);
+				ProgressForm pForm = new ProgressForm(bundle, stage);
 				pForm.activateProgressBar(writer);
 
 				writer.setOnSucceeded(event -> {
-					pForm.getDialogStage().close();
+					pForm.close();
 					pForm.deactivateProgressBar();
 					dirtyFlag = false;
 				});
 
-				pForm.getDialogStage().show();
+				pForm.show();
 
 				Thread thread = new Thread(writer);
 				thread.start();

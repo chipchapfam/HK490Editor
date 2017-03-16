@@ -19,6 +19,15 @@ import javafx.concurrent.Task;
  *
  */
 public class SortProgramTask extends Task<Void> {
+	/**
+	 * 
+	 * Enum for sort order
+	 *
+	 * @author []
+	 * @version 1.0
+	 * @since 16.03.2017
+	 *
+	 */
 	public static enum SortOrder {
 		ASC(1), DESC(-1);
 
@@ -37,12 +46,30 @@ public class SortProgramTask extends Task<Void> {
 	private List<ProgramTVObject> programList;
 	private ResourceBundle bundle;
 
+	/**
+	 * constructor
+	 * 
+	 * @param bundle
+	 *            ResourceBundle
+	 * @param programList
+	 *            List of programs
+	 * @param sortOrder
+	 *            SortOrder
+	 */
 	public SortProgramTask(ResourceBundle bundle, List<ProgramTVObject> programList, SortOrder sortOrder) {
 		this.bundle = bundle;
 		this.programList = programList;
 		this.sortOrder = sortOrder;
 	}
 
+	/**
+	 * contructor with ASC-Sortorder
+	 * 
+	 * @param bundle
+	 *            ResourceBundle
+	 * @param programList
+	 *            List of programs
+	 */
 	public SortProgramTask(ResourceBundle bundle, List<ProgramTVObject> programList) {
 		this(bundle, programList, SortOrder.ASC);
 	}
@@ -61,6 +88,11 @@ public class SortProgramTask extends Task<Void> {
 		return null;
 	}
 
+	/**
+	 * change sort order
+	 * 
+	 * @param sortOrder
+	 */
 	public void setSortOrder(SortOrder sortOrder) {
 		this.sortOrder = sortOrder;
 	}
